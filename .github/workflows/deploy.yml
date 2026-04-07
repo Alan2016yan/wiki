@@ -29,10 +29,12 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        run: npm ci
+        run: cd quartz-repo && npm ci
 
       - name: Build Quartz
-        run: npx quartz build --output public
+        run: |
+          cd quartz-repo
+          npx quartz build --output ../public
         env:
           NODE_OPTIONS: "--max_old_space_size=2048"
 
